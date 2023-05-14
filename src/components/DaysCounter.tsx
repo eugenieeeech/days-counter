@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 export const DaysCounter= ()=>{
-    const [startingDay,setStartingDay]= useState(new Date("04/12/2023"));
+    const [startingDay,setStartingDay]= useState(new Date());
     const resultDate= new Date();
     const [result,setResult]= useState("");
     const [inputDays,setInputDays] = useState(1)
     const handleInputDays =(e:any)=>{
         const input = e.target.value;
-        inputDays < 0 ? setInputDays(1):setInputDays(input)
+        setInputDays(input)
     }
     const handleStartingDayChange=(e:any)=>{
         const updateDate = new Date(e.target.value)
@@ -51,7 +51,7 @@ export const DaysCounter= ()=>{
     </div>
 
     <p className="mt-10 text-center text-sm text-gray-500">
-        The Date after {inputDays} days is {result}
+        The Date {inputDays>0?"after":"before"} {Math.abs(inputDays)} days is {result}
     </p>
   </div>
 </div>
